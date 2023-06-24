@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+
+<body style=" background-image: url('https://images.unsplash.com/photo-1604065626882-47c3093bec11?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHZvdGV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60');
+    background-size: cover;
+    background-repeat:  no-repeat;">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+
+    <div class="container">
+        <div class="row center">
+            <div class="col-md-6 offset-md-3">
+                <h2 style="font-family: 'Special Elite', cursive;">Create new poll</h2>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            <div class="col-md-6">
+                <form action="" style="color: black; font-size: 20px; font-weight: bold; font-family: 'Special Elite', cursive;" method="POST">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                        {{ field }}
+                    </div>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-primary">Add Poll</button>
+                    <a class="btn btn-success" href="{% url 'list' %}" role="button" >Back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{%block content%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+<style>
+    #profile {
+        width: 150px;
+        height: 150px;
+        overflow: hidden;
+        border-radius: 50%;
+    }
+</style>
+<!-- <style>
+    #background2{
+        background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+</style> -->
+
+<body style=" background-image: url('https://images.unsplash.com/photo-1604065626882-47c3093bec11?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHZvdGV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60');
+    background-size: cover;
+    background-repeat:  no-repeat;">
+
+    <div class="container">
+        <div class="col-sm-6 m-auto ">
+            <div class=" content-section container" style="padding-top: 100px;">
+                <div class="media">
+                    <div class="col-sm-4">
+                        <div id="profile" class="rounded-circle">
+                            <img style="width: 120%; height: 120%;" src="{{user.profile.picture.url }}" alt="">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="media-body">
+                        <h2 style="font-family: 'Special Elite', cursive; color: black; font-size: 40px;">
+                            {{user.username}}</h2>
+                        <p style="font-family: 'Special Elite', cursive; color: black; font-size: 30px;">{{user.email}}
+                        </p>
+                        <p style="font-family: 'Special Elite', cursive; font-size: 25px;">{{user.profile.bio}}</p>
+                        <hr>
+                        <a href="{% url 'list' %}">
+                            <button class="btn btn-success">Back to Polls</button>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+{%endblock content%}

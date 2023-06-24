@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body style=" background-image: url('https://images.unsplash.com/photo-1604065626882-47c3093bec11?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHZvdGV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60');
+    background-size: cover;
+    background-repeat:  no-repeat;">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <div class="container">
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="{{ message.tags }}">{{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="row">
+            <div class="col-md-8 offset-sm-2">
+                {% if poll.active %}
+                <h3 class="mt-3 mb-3 text-center" style="font-family: 'Special Elite', cursive;">Result for: {{ poll.description }}</h3>
+                {% else %}
+                <h3 class="mt-3 mb-3 text-center" style="font-family: 'Special Elite', cursive;">"{{ poll.description }}" Has Ended Polling !</h3>
+                {% endif %}
+                <h3 class="mb-2 text-center" style="font-family: 'Special Elite', cursive;">Total: {{ poll.get_vote_count }} votes</h3>
+                <!-- progress bar -->
+                <div class="progress mt-3 mb-2">
+                    {% for choice in poll.get_result_dict %}
+                    <div class="progress-bar bg-{{ choice.alert_class }}" role="progressbar"
+                        style="width: {{ choice.percentage }}%;" aria-valuenow="30" aria-valuemin="0"
+                        aria-valuemax="100"><b>
+                            {{choice.text|truncatewords:2}}-{{choice.percentage|floatformat}}%</b>
+                    </div>
+                    {% endfor %}
+
+                </div>
+                <ul class="list-group">
+                    {% for choice in poll.choice_set.all %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center" style="font-size: 25px; font-family: 'Special Elite', cursive;">
+                        {{ choice.choice_text }}
+                        <span class="badge badge-primary badge-pill">{{ choice.get_vote_count }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <a class="btn btn-primary mt-3" href="{% url 'list' %}" role="button">Back To Polls</a>
+            </div>
+
+        </div>
+    </div>
+</body>
+{% endblock content %}
