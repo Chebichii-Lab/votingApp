@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+
+
+    {% block content %}
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body  style=" background-image: url('https://images.unsplash.com/photo-1604065626882-47c3093bec11?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHZvdGV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60');
+        background-size: cover;
+        background-repeat:  no-repeat;">
+
+        
+        {% block custom_css %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        {% endblock custom_css %}
+
+        <style>
+            .footer-basic {
+  padding:30px 0;
+  background-color:#141414;
+  color:#ffffff;
+}
+
+.footer-basic ul {
+  padding:0;
+  list-style:none;
+  text-align:center;
+  font-size:18px;
+  line-height:1.6;
+  margin-bottom:0;
+}
+
+.footer-basic li {
+  padding:0 20px;
+}
+
+.footer-basic ul a {
+  color:inherit;
+  text-decoration:none;
+  opacity:0.8;
+}
+
+.footer-basic ul a:hover {
+  opacity:1.5;
+}
+
+.footer-basic .social {
+  text-align:center;
+  padding-bottom:25px;
+}
+
+.footer-basic .social > a {
+  font-size:26px;
+  width:40px;
+  height:40px;
+  line-height:40px;
+  display:inline-block;
+  text-align:center;
+  border-radius:50%;
+  border:1px solid rgb(236, 215, 21);
+  margin:0 8px;
+  color:inherit;
+  opacity:0.75;
+}
+
+.footer-basic .social > a:hover {
+  opacity:1.5;
+}
+
+.footer-basic .copyright {
+  margin-top:15px;
+  text-align:center;
+  color:rgb(255, 255, 255);
+  margin-bottom:0;
+}
+
+        </style>
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div id="index-content">
+                        <h1 style="text-align: center; font-family: 'Special Elite', cursive; color: black;">A-Poll</h1>
+                        <h3 style="text-align: center; font-family: 'Special Elite', cursive; color: black;">You must be the
+                            change you want to see in the world.
+                            Stand up and go Vote. Your voice matters!!</h3>
+                        <hr>
+                        <br>
+                        <br>
+                        <a class="btn btn-primary btn-lg" href="{% url 'list' %}" role="button"
+                            style="margin-left: 450px; font-family: 'Special Elite', cursive;" data-mdb-toggle="animation"
+                            data-mdb-animation-reset="true" data-mdb-animation="slide-out-right">Get Started !</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <div class="footer-basic" style="margin-top: 400px;">
+            <footer>
+                <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-github"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-google"></i></a><a href="#"><i class="icon ion-social-pinterest"></i></a></div>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="#">Home</a></li>
+                    <li class="list-inline-item"><a href="#">Contacts</a></li>
+                    <li class="list-inline-item"><a href="#">About</a></li>
+                    <li class="list-inline-item"><a href="#">Terms</a></li>
+                    <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+                </ul>
+                <p class="copyright" style="font-size: 20px;">A-Poll- Natasha Serem © 2021</p>
+            </footer>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+
+    </body>
+
+</html>
+{% endblock content %}
