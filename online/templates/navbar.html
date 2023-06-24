@@ -105,18 +105,18 @@
             </li>
             {% if request.user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'list' %}" style="color:white; font-family: 'Special Elite', cursive; font-size: 20px;">Polls</a>
+                <a class="nav-link" href=" " style="color:white; font-family: 'Special Elite', cursive; font-size: 20px;">Polls</a>
             </li>
             {% endif %}
         </ul>
         <div class="navbar-nav ml-auto">
             {% if request.user.is_authenticated %}
             <li><a class="nav-link" href="profile/" style="color: white; font-family: 'Special Elite', cursive; font-size: 20px;">Profile</a></li>
-            <a class="nav-link" href="{% url 'list_by_user' %}" style="color: white; font-family: 'Special Elite', cursive; font-size: 20px;">My Polls</a>
+            <a class="nav-link" href=" " style="color: white; font-family: 'Special Elite', cursive; font-size: 20px;">My Polls</a>
             <a class="nav-link" href="logout/" style="color: white; font-family: 'Special Elite', cursive; font-size: 20px;">Logout</a>
             {% else %}
-            <a class="nav-link" href="{% url 'login' %}" style="color: white; font-family: 'Special Elite', cursive;">Login</a>
-            <a class="nav-link" href="{% url 'registration' %}" style="color: white; font-family: 'Special Elite', cursive;">Register</a>
+            <a class="nav-link" href=" " style="color: white; font-family: 'Special Elite', cursive;">Login</a>
+            <a class="nav-link" href=" " style="color: white; font-family: 'Special Elite', cursive;">Register</a>
             {% endif %}
         </div>
     </div>

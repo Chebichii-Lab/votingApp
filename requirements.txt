@@ -6,6 +6,8 @@ django-bootstrap4==23.1
 django-registration==3.3
 djangorestframework==3.14.0
 Pillow==9.5.0
+psycopg2-binary==2.9.6
+pyscopg2==66.0.2
 pytz==2023.3
 soupsieve==2.4.1
 sqlparse==0.4.4
