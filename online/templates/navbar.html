@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background: #fffcfc;
+        }
+        .form-inline {
+            display: inline-block;
+        }
+        .navbar {		
+            background: rgb(0, 0, 0);
+            padding-left: 16px;
+            padding-right: 16px;
+            border-bottom: 1px solid #161616;
+            box-shadow: 0 0 4px rgba(27, 27, 27, 0.1);
+        }
+        .nav img {
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            margin: -8px 0;
+            float: left;
+            margin-right: 10px;
+        }
+        .navbar .navbar-brand {
+            color: rgb(255, 255, 255);
+            padding-left: 0;
+            font-size: 20px;
+            padding-right: 50px;
+        }
+        .navbar .navbar-brand b {
+            font-weight: bold;
+            color: #ffffff;
+        }
+        .navbar ul.nav li a:hover, .navbar ul.nav li a:focus {
+            color: #ca4141;
+        }
+        .navbar ul.nav li.active a, .navbar ul.nav li.active a:hover, .navbar ul.nav li.active a:focus {
+            color: #c52323;
+            background: transparent;
+        }
+        .search-box {
+            position: relative;
+        }	
+        .search-box input.form-control {		
+            padding-right: 35px;
+            border-radius: 0;
+            padding-left: 0;
+            border-width: 0 0 1px 0;
+            box-shadow: none;
+        }
+        .search-box input.form-control:focus {		
+            border-color: #000000;		
+        }
+        .search-box .input-group-addon {
+            min-width: 35px;
+            border: none;
+            position: absolute;
+            right: 0;
+            z-index: 9;
+            padding: 7px 0 7px 7px;
+            height: 100%;
+        }
+        .search-box i {
+            color: #000000;
+            font-size: 30px;
+        }
+        .navbar ul li i {
+            font-size: 30px;
+        }
+        @media (min-width: 992px){
+            .form-inline .input-group {
+                width: 250px;
+                margin-right: 30px;
+            }
+        }
+        @media (max-width: 991px){
+            .form-inline {
+                display: block;
+                margin-bottom: 10px;
+                margin-top: 0;
+            }
+            .input-group {
+                width: 100%;
+            }
+        }
+    </style>
+</head> 
+<body>
+<nav class="navbar navbar-expand-sm ">
+    <a class="navbar-brand" href="#" style="font-size: 40px; font-family: 'Special Elite', cursive; ">A-Poll</a> 
+    <img src="https://img.icons8.com/emoji/52/000000/ballot-box-with-ballot.png"/> 
+    <div id="navbarCollapse" class="collapse navbar-collapse">
+        <ul class=" nav navbar-nav">
+            <li class="nav-item ">
+                <a class="nav-link" href="{% url 'index' %}" style="color:white; font-family: 'Special Elite', cursive; font-size: 20px;">Home <span class="sr-only">(current)</span></a>
+            </li>
+            {% if request.user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'list' %}" style="color:white; font-family: 'Special Elite', cursive; font-size: 20px;">Polls</a>
+            </li>
+            {% endif %}
+        </ul>
+        <div class="navbar-nav ml-auto">
+            {% if request.user.is_authenticated %}
+            <li><a class="nav-link" href="profile/" style="color: white; font-family: 'Special Elite', cursive; font-size: 20px;">Profile</a></li>
+            <a class="nav-link" href="{% url 'list_by_user' %}" style="color: white; font-family: 'Special Elite', cursive; font-size: 20px;">My Polls</a>
+            <a class="nav-link" href="logout/" style="color: white; font-family: 'Special Elite', cursive; font-size: 20px;">Logout</a>
+            {% else %}
+            <a class="nav-link" href="{% url 'login' %}" style="color: white; font-family: 'Special Elite', cursive;">Login</a>
+            <a class="nav-link" href="{% url 'registration' %}" style="color: white; font-family: 'Special Elite', cursive;">Register</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+</body>
