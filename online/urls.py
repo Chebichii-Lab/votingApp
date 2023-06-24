@@ -8,9 +8,9 @@ from django.conf import settings
 
 urlpatterns=[
     path(r'',views.index,name='index'),
-    # url('register/',views.signup, name='registration'),
-    # url('login/', auth_views.LoginView.as_view(), name='login'),
-    # url('logout/',auth_views.LogoutView.as_view(), name='logout'),
+    path('register/',views.signup, name='registration'),
+    path('login/', auth_views.LoginView.as_view(), name='login'),
+    path('logout/',auth_views.LogoutView.as_view(), name='logout'),
     # url('profile/', views.user_profile, name='profile'),
     # path('list/', views.polls_list, name='list'),
     # path('add/', views.polls_add, name='add'),
