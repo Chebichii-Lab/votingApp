@@ -1,7 +1,7 @@
 from online.models import Choice, Poll, Vote
-from online.forms import AddChoiceForm, AddPollForm, EditPollForm, SignupForm, UserProfileForm
+from online.forms import AddChoiceForm, AddPollForm, EditPollForm, LoginForm, RegisterForm, UserProfileForm
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.db.models import Count
@@ -14,19 +14,52 @@ def index(request):
     polls = Poll.objects.all()
     return render(request,'index.html', {'polls':polls})
 
-def signup(request):
+def sign_up(request):
+    if request.method == 'GET':
+        form = RegisterForm()
+        return render(request, 'registration/registration_form.html', { 'form': form}) 
     if request.method == 'POST':
-        form = SignupForm(request.POST)
+        form = RegisterForm(request.POST) 
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+            messages.success(request, 'You have singed up successfully.')
             login(request, user)
-            return redirect('login')
-    else:
-        form = SignupForm()
-    return render(request, 'registration/registration_form.html', {'form': form})
+            return redirect('posts')
+        else:
+            return render(request, 'registration/registration_form.html', {'form': form})
+        
+def sign_in(request):
+
+    if request.method == 'GET':
+        if request.user.is_authenticated:
+            return redirect('index')
+        
+        form = LoginForm()
+        return render(request,'registration/login.html', {'form': form})
+    
+    elif request.method == 'POST':
+        form = LoginForm(request.POST)
+        
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password=form.cleaned_data['password']
+            user = authenticate(request,username=username,password=password)
+            if user:
+                login(request, user)
+                messages.success(request,f'Hi {username.title()}, welcome back!')
+                return redirect('index')
+        
+        # either form not valid or user is not authenticated
+        messages.error(request,f'Invalid username or password')
+        return render(request,'registration/login.html',{'form': form})
+
+
+def sign_out(request):
+    logout(request)
+    messages.success(request,f'You have been logged out.')
+    return redirect('login') 
 
 @login_required(login_url='/accounts/login/')    
 def user_profile(request):
