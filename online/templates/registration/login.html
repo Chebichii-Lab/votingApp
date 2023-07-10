@@ -21,6 +21,8 @@
             <h2>Login</h2>
             {{form.as_p}}
             <input type="submit" value="Login" />
+            <input type="hidden" name="next" value="{{next}}">
+            <p class="container">You don't have an account? <a href="/register"> Sign Up</a></p>
           </form>
 
         </div>
