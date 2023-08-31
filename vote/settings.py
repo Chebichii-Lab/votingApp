@@ -138,3 +138,7 @@ REST_FRAMEWORK = {
 }
 
 LOGIN_URL = 'login'
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://votingapp-production-7c71.up.railway.app'
+]
