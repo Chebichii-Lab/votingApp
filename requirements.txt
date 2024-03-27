@@ -1,7 +1,7 @@
-asgiref==3.7.2
+asgiref==3.8.1
 beautifulsoup4==4.12.2
 confusable-homoglyphs==3.2.0
-Django==4.2.2
+Django==5.0.3
 django-bootstrap4==23.1
 django-registration==3.3
 djangorestframework==3.14.0
@@ -13,4 +13,4 @@ pyscopg2==66.0.2
 pytz==2023.3
 soupsieve==2.4.1
 sqlparse==0.4.4
-typing_extensions==4.6.3
+typing_extensions==4.10.0
