@@ -1,6 +1,7 @@
 asgiref==3.8.1
 beautifulsoup4==4.12.2
 confusable-homoglyphs==3.2.0
+dj-database-url==2.1.0
 Django==5.0.3
 django-bootstrap4==23.1
 django-registration==3.3
